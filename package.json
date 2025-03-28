@@ -1,0 +1,12 @@
+{
+  "name": "college-attendance-app",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server/index.js",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
