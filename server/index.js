@@ -1,11 +1,22 @@
+import os from "node:os";
 import fs from "node:fs";
 import path from "node:path";
 
 import express from "express";
+import mariadb from "mariadb";
+
+import secrets from "../secrets.json" with { type: json };
 
 const s_port = 8080;
 const s_app = express();
 const s_pathFront = ".";
+const s_pool = mariadb.createPool({
+	host: "localhost",
+	database: "leaves",
+	connectionLimit: 25,
+	user: secrets.username,
+	password: secrets.password,
+});
 const s_pathAttendance = "./attendance";
 
 s_app.use(express.static(s_pathFront)); // Serve those pages FIRST!
@@ -15,11 +26,11 @@ s_app.get("/submit", (p_request, p_response) => {
 
 	// WE TIME FIRST!:
 	const date = new Date();
+	const query = p_request.query;
 
 	const day = date.getDate();
 	const month = date.getMonth();
 	const year = date.getFullYear();
-	const query = p_request.query;
 	// Will put this into a daily-set timer, *maybe*, so even a broken CMOS battery lasts a day.
 
 	// Data-data-da:
@@ -69,7 +80,6 @@ s_app.get("/submit", (p_request, p_response) => {
 		p_response.status(200).send("Done LOL.");
 
 	}
-
 
 });
 
