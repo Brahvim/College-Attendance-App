@@ -1,17 +1,91 @@
-#roll {
-	margin-left: 40vw;
+/* THESE are CSS variables! */
+:root {
+	--background-color: #161919;
+	--primary-color: #007BFF;
+	--button-hover: #0056b3;
+	--text-color: #fff;
+	--border-radius: 8px;
 }
 
-#present {
-	margin-left: 40vw;
-	font-size: xx-large;
+/* Everything has a box and Segoe. */
+* {
+	margin: 0 0 0 0;
+	padding-top: 2.5%;
+	box-sizing: border-box;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.reason {
-	margin-left: 40vw;
+/* Center it ALL. */
+body {
+	background: var(--background-color);
+	font-size: calc(1rem + 1vw);
+	color: var(--text-color);
+	justify-content: center;
+	align-items: center;
+
+	/* `flex` 'cuz it scales. `flexbox`es occupy ALL space like a landscape Android app. */
+	display: flex;
+
+	/* Per viewport height! */
+	height: 75vh;
+
+	padding: 0%;
 }
 
-#absent {
-	margin-left: 40vw;
-	font-size: small;
+@media (max-width: 768px) {
+	body {
+		font-size: calc(1rem + 1.5vw);
+	}
+}
+
+#reasons-heading {
+	text-align: center;
+}
+
+/* "Mark Me!" */
+#mark {
+	width: 100%;
+	border: none;
+	color: white;
+
+	/* Multiply the number here by the `font-size` of the parent element, and you get this `font-size` here: */
+	font-size: 1rem;
+
+	cursor: pointer;
+
+	/* Set the top and bottom AS WELL AS left and right to these!: */
+	margin-top: 50px;
+	padding: 10px 20px;
+
+	/* This is changed in `transition` and `#present:hover` later!: */
+	background: var(--primary-color);
+	border-radius: var(--border-radius);
+
+	/* Animation without `animation`!: */
+	transition: background 0.3s ease-in-out;
+}
+
+/* Hovering on it has a transition! */
+#mark:hover {
+	background: var(--button-hover);
+}
+
+/* Fancy checkboxes...: */
+input[type="radio"],
+input[type="checkbox"] {
+	scale: 2;
+	accent-color: var(--primary-color);
+}
+
+input[type="number"] {
+	scale: 2;
+	width: 50pt;
+	padding: 1% 1%;
+	accent-color: var(--primary-color);
+}
+
+li {
+	gap: 0.5rem;
+	display: flex;
+	align-items: center;
 }

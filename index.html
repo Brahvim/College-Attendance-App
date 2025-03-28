@@ -16,32 +16,53 @@
 
 <body>
 	<form action="/submit">
-		<pre id="roll">
-Branch:	Roll number:
-<input
-	name="branch"
-	type="radio"
-	value="cs"
-	required
->CS	<input name="roll" type="number" required>
-<input
-	name="branch"
-	type="radio"
-	value="ee"
-	required
->EE
-</pre>
-		<pre><p class="reason">Absence Reason:</p><li
-			class="reason"
-			id="reason-ill"
-			> Ill 			<input name="reasonIll" type="checkbox"> </li><li
-			class="reason"
-			id="reason-fam"
-			> Family issue 		<input name="reasonFam" type="checkbox"> </li><li
-			class="reason"
-			id="reason-evt"
-			> Family event 		<input name="reasonEvt" type="checkbox"> </li></pre>
-		<button id="present">MARK ME!</button>
+		<p id="roll">
+		<pre>Gimme your <b>Branch</b> & <b>Roll Number</b> ^-^ ✨!:</pre>
+		<pre>
+	<input
+		name="branch"
+		type="radio"
+		value="cs"
+		required
+	>   CS				<input
+		name="roll"
+		type="number"
+		required
+		>
+	<input
+		name="branch"
+		type="radio"
+		value="ee"
+		required
+	>   EE
+		</pre>
+		</p>
+
+		<br>
+		<i>
+			<p id="reasons-heading">Are you <u>not coming?</u>:</p>
+		</i>
+
+		<li id="reason-ill">
+			<pre> Ill 				<input
+				name="reasonIll"
+				type="checkbox"
+			> </pre>
+		</li>
+		<li id="reason-fam">
+			<pre> Family issue 		<input
+				name="reasonFam"
+				type="checkbox"
+			> </pre>
+		</li>
+		<li id="reason-evt">
+			<pre> Family event 			<input
+				name="reasonEvt"
+				type="checkbox"
+			> </pre>
+		</li>
+		<br>
+		<button id="mark">MARK ME!</button>
 	</form>
 </body>
 
