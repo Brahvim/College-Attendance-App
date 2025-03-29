@@ -94,7 +94,6 @@ s_app.get("/submit", (p_request, p_response) => {
 	s_pool.getConnection()
 		.then((p_conn) => {
 
-
 			p_conn.query(
 				`INSERT INTO leaves2025 (day, roll, reasons) 
 				VALUES (?, ?, ?)
