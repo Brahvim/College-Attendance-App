@@ -18,8 +18,8 @@ const s_pathFront = ".";
 const s_pool = mariadb.createPool({
 	port: 3306,
 	host: "127.0.0.1",
-	connectionLimit: 50,
 	idleTimeout: 1_000,
+	connectionLimit: 50,
 	user: s_secrets.username,
 	database: "leaves_app_db",
 	password: s_secrets.password,
@@ -95,10 +95,10 @@ s_app.get("/submit", (p_request, p_response) => {
 		.then((p_conn) => {
 
 			p_conn.query(
-				`INSERT INTO leaves2025 (day, roll, reasons) 
+				`INSERT INTO attendance? (day, roll, reasons)
 				VALUES (?, ?, ?)
 				ON DUPLICATE KEY UPDATE reasons = ?;`,
-				[day, queryRoll, reasonsBits, reasonsBits]
+				[year, day, queryRoll, reasonsBits, reasonsBits]
 			)
 				.then(() => {
 
