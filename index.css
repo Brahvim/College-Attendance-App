@@ -32,6 +32,7 @@ body {
 	padding: 0%;
 }
 
+/* Mobile. It fits *just a little* better. Not necessary, though. */
 @media (max-width: 768px) {
 	body {
 		font-size: calc(1rem + 1.5vw);
@@ -54,7 +55,7 @@ body {
 	cursor: pointer;
 
 	/* Set the top and bottom AS WELL AS left and right to these!: */
-	margin-top: 50px;
+	margin-top: 20vh;
 	padding: 10px 20px;
 
 	/* This is changed in `transition` and `#present:hover` later!: */
@@ -62,7 +63,7 @@ body {
 	border-radius: var(--border-radius);
 
 	/* Animation without `animation`!: */
-	transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out, transform 0.1s ease-in-out;
 }
 
 /* Hovering on it has a transition! */
@@ -70,7 +71,16 @@ body {
 	background: var(--button-hover);
 }
 
+#mark:active,
+#mark.changed {
+	transform: scale(0.95);
+}
+
 /* Fancy checkboxes...: */
+input {
+	transition: scale 0.2s ease-out;
+}
+
 input[type="radio"],
 input[type="checkbox"] {
 	scale: 2;
@@ -80,8 +90,17 @@ input[type="checkbox"] {
 input[type="number"] {
 	scale: 2;
 	width: 50pt;
-	padding: 1% 1%;
+	padding: 1%;
 	accent-color: var(--primary-color);
+}
+
+input:active {
+	scale: 5;
+}
+
+input[type="number"].changed,
+input[type="number"]:active {
+	scale: 2.5;
 }
 
 li {

@@ -2,11 +2,6 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta
-		name="viewport"
-		content="width=device-width, initial-scale=1.0"
-	>
 	<link
 		rel="stylesheet"
 		href="/index.css"
@@ -18,8 +13,8 @@
 <body>
 	<form action="/submit">
 		<p id="roll">
-		<pre>Gimme your <b>Branch</b> & <b>Roll Number</b> ^-^ ✨!
-	(<b>Last 4 digits!</b> No zeroes required!)</pre>
+		<pre>Enter your <b>Branch</b> & <b>Roll Number</b> ^-^ ✨!
+	(<b>Last 4 digits!</b> No zeroes needed!)</pre>
 		<pre>
 	<input
 		id="branch-selector-cs"
@@ -41,32 +36,20 @@
 		type="radio"
 		value="ee"
 		required
-	>   EE
-		</pre>
+	>   EE</pre>
 		</p>
 
-		<br>
-		<p id="reasons-heading"><i>Are you <u>not coming</u>?:</i></p>
+		<pre id="reasons-heading"><i>Not coming? <u>Report why</u>:</i></pre>
 
 		<li id="reason-ill">
-			<pre> Ill 				<input
-				name="reasonIll"
-				type="checkbox"
-			> </pre>
+			<pre>Ill 				<input name="reasonIll" id="reasonIllBox" type="checkbox" ></pre>
 		</li>
 		<li id="reason-fam">
-			<pre> Family issue 		<input
-				name="reasonFam"
-				type="checkbox"
-			> </pre>
+			<pre>Family issue			<input name="reasonFam" id="reasonFamBox" type="checkbox"></pre>
 		</li>
 		<li id="reason-evt">
-			<pre> Family event 			<input
-				name="reasonEvt"
-				type="checkbox"
-			> </pre>
+			<pre>Family event				<input name="reasonEvt" id="reasonEvtBox" type="checkbox"></pre>
 		</li>
-		<br>
 		<button id="mark">MARK ME!</button>
 	</form>
 </body>

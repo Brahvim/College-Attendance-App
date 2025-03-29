@@ -1,19 +1,28 @@
 DROP DATABASE IF EXISTS leaves_app_db;
 CREATE DATABASE IF NOT EXISTS leaves_app_db;
 USE leaves_app_db;
+--
+-- Students `TABLE`...
+--
 CREATE TABLE IF NOT EXISTS students(roll BIGINT UNSIGNED NOT NULL PRIMARY KEY);
+--
+-- That ONE `TABLE` this app *actually* needs:
+--
 CREATE TABLE IF NOT EXISTS attendance2025(
-	day SMALLINT NOT NULL CHECK (
-		-- You ACTUALLY CAN check without a `TRIGGER`!:
-		day BETWEEN 1 and 366
-	),
-	roll BIGINT UNSIGNED NOT NULL,
-	reasons BIT(3) NOT NULL,
-	PRIMARY KEY (day, roll),
-	-- `ON DELETE RESTRICT` allows keeping entries around even if the corresponding `roll` gets deleted.
-	-- Default behavior is `ON DELETE CASCADE`, which *does* actually delete un-**related** entries.
-	FOREIGN KEY (roll) REFERENCES students(roll) ON DELETE RESTRICT -- Oh! And there's also `ON DELETE SET NULL`. LOL.
+day SMALLINT NOT NULL CHECK (
+	-- You ACTUALLY CAN check without a `TRIGGER`!:
+	day BETWEEN 1 and 366
+),
+roll BIGINT UNSIGNED NOT NULL,
+reasons BIT(3) NOT NULL,
+PRIMARY KEY (day, roll),
+-- `ON DELETE RESTRICT` allows keeping entries around even if the corresponding `roll` gets deleted.
+-- Default behavior is `ON DELETE CASCADE`, which *does* actually delete un-**related** entries.
+FOREIGN KEY (roll) REFERENCES students(roll) ON DELETE RESTRICT -- Oh! And there's also `ON DELETE SET NULL`. LOL.
 );
+--
+-- Fake entries for now. Ooooof course:
+--
 INSERT INTO students (roll)
 VALUES -- First, EE folks:
 	(22030040001),
@@ -41,12 +50,13 @@ VALUES -- First, EE folks:
 -- `NULL`-filled `VIEW` for the Excel folk:
 --
 CREATE VIEW IF NOT EXISTS excel2025 AS
-SELECT day,
-	roll,
-	reasons & 0b001 AS ill,
-	reasons & 0b010 AS family_issue,
-	reasons & 0b100 AS family_event
+SELECT day AS "Day",
+	roll AS "Roll Number",
+	(reasons & 0b001) > 0 AS "Ill",
+	(reasons & 0b010) > 0 AS "Family Issue",
+	(reasons & 0b100) > 0 AS "Family Event"
 FROM attendance2025;
+--
 -- `CREATE` a new `TABLE` at midnight on Jan 1 every year, starting at the current year's Jan 1 midnight:
 --
 CREATE EVENT IF NOT EXISTS new_year_table ON SCHEDULE EVERY 1 YEAR STARTS TIMESTAMP(
@@ -68,7 +78,9 @@ FROM @new_table_stmt;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
 END;
--- ...Welcome back, semii!
+--
+-- Use this to become the almighty observer of records:
+--
 SELECT *
 FROM attendance2025
 ORDER BY day ASC,

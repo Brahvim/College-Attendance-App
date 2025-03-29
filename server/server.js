@@ -1,10 +1,9 @@
-import os from "node:os";
 import fs from "node:fs";
 
 import express from "express";
 import mariadb from "mariadb";
 
-//#region Statics.
+// #region Statics.
 const s_branches = new Set(["cs", "ee"]);
 const s_branchToRollSection = {
 	"cs": "005",
@@ -25,7 +24,7 @@ const s_pool = mariadb.createPool({
 	password: s_secrets.password,
 });
 const s_pathAttendance = "./attendance";
-//#endregion
+// #endregion
 
 s_app.use(express.static(s_pathFront)); // Serve those pages FIRST!
 s_app.use(express.json()); // THEN parse the backend stuff. PERFORMANCE!!!
