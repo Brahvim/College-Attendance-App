@@ -18,7 +18,7 @@
 /* Center it ALL. */
 body {
 	background: var(--background-color);
-	font-size: calc(1rem + 1vw);
+	font-size: calc(1rem + 1.5vh);
 	color: var(--text-color);
 	justify-content: center;
 	align-items: center;
@@ -35,7 +35,7 @@ body {
 /* Mobile. It fits *just a little* better. Not necessary, though. */
 @media (max-width: 768px) {
 	body {
-		font-size: calc(1rem + 1.5vw);
+		font-size: calc(1rem + 0.95vh);
 	}
 }
 
@@ -55,7 +55,7 @@ body {
 	cursor: pointer;
 
 	/* Set the top and bottom AS WELL AS left and right to these!: */
-	margin-top: 20vh;
+	margin-top: 5vh;
 	padding: 10px 20px;
 
 	/* This is changed in `transition` and `#present:hover` later!: */
@@ -66,7 +66,7 @@ body {
 	transition: background 0.3s ease-in-out, transform 0.1s ease-in-out;
 }
 
-/* Hovering on it has a transition! */
+/* Hovering on it has a `transition`!: */
 #mark:hover {
 	background: var(--button-hover);
 }
@@ -76,31 +76,48 @@ body {
 	transform: scale(0.95);
 }
 
-/* Fancy checkboxes...: */
-input {
-	transition: scale 0.2s ease-out;
+#notif {
+	opacity: 0;
+	z-index: 1;
+	margin-top: 5vh;
+	text-align: center;
+	padding: 10px 20px;
+	border-radius: 8px;
+	color: var(--background-color);
+	background: var(--background-color);
+	transition: background-color 0.2s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#notif.changed {
+	opacity: 1;
+	color: black;
+	background: #ffcc00;
+}
+
+/* Fancy animations `transition`s...: */
+input[type="radio"]:active,
+input[type="checkbox"]:active {
+	scale: 5;
 }
 
 input[type="radio"],
 input[type="checkbox"] {
 	scale: 2;
+	transition: scale 0.2s ease-out;
 	accent-color: var(--primary-color);
 }
 
 input[type="number"] {
-	scale: 2;
 	width: 50pt;
 	padding: 1%;
+	transform: scale(2);
 	accent-color: var(--primary-color);
-}
-
-input:active {
-	scale: 5;
+	transition: transform 0.1s ease-in;
 }
 
 input[type="number"].changed,
 input[type="number"]:active {
-	scale: 2.5;
+	transform: scale(2.5);
 }
 
 li {

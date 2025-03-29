@@ -23,7 +23,6 @@ const s_pool = mariadb.createPool({
 	database: "leaves_app_db",
 	password: s_secrets.password,
 });
-const s_pathAttendance = "./attendance";
 // #endregion
 
 s_app.use(express.static(s_pathFront)); // Serve those pages FIRST!

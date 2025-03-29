@@ -85,3 +85,8 @@ SELECT *
 FROM attendance2025
 ORDER BY day ASC,
 	roll ASC;
+--
+-- ...in Excel-View:
+--
+SELECT *
+FROM excel2025;

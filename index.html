@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1"
+	>
 	<link
 		rel="stylesheet"
 		href="/index.css"
@@ -11,10 +15,14 @@
 </head>
 
 <body>
-	<form action="/submit">
+	<form
+		id="form"
+		action="/submit"
+	>
 		<p id="roll">
 		<pre>Enter your <b>Branch</b> & <b>Roll Number</b> ^-^ ✨!
-	(<b>Last 4 digits!</b> No zeroes needed!)</pre>
+	(<b>Last 4 digits!</b> No zeroes needed!)
+		</pre>
 		<pre>
 	<input
 		id="branch-selector-cs"
@@ -28,8 +36,8 @@
 		type="number"
 		name="roll"
 		required
-		min="0"
-		>
+		min="1"
+	>
 	<input
 		id="branch-selector-ee"
 		name="branch"
@@ -38,9 +46,7 @@
 		required
 	>   EE</pre>
 		</p>
-
 		<pre id="reasons-heading"><i>Not coming? <u>Report why</u>:</i></pre>
-
 		<li id="reason-ill">
 			<pre>Ill 				<input name="reasonIll" id="reasonIllBox" type="checkbox" ></pre>
 		</li>
@@ -50,6 +56,9 @@
 		<li id="reason-evt">
 			<pre>Family event				<input name="reasonEvt" id="reasonEvtBox" type="checkbox"></pre>
 		</li>
+
+		<pre id="notif">Done! :D</pre>
+
 		<button id="mark">MARK ME!</button>
 	</form>
 </body>
