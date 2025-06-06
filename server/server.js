@@ -1,5 +1,3 @@
-import fs from "node:fs";
-
 import express from "express";
 import mariadb from "mariadb";
 
@@ -10,7 +8,12 @@ const s_branchToRollSection = {
 	"ee": "004",
 };
 
-const s_secrets = JSON.parse(fs.readFileSync("./secrets.json"));
+const s_secrets = {
+
+	username: process.env.username,
+	password: process.env.password,
+
+};
 const s_port = 8080;
 const s_app = express();
 const s_pathFront = ".";

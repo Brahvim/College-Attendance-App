@@ -1,3 +1,4 @@
+*.env
 attendance/
 secrets.json
 node_modules/
