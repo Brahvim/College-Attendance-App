@@ -2,21 +2,11 @@ const g_onMobile = !!navigator.userAgent.toLowerCase().includes("mobile");
 
 document.addEventListener("DOMContentLoaded", () => {
 
-	// #region Selections.
 	const eltRadioCs = document.getElementById("branch-selector-cs");
 	const eltRadioEe = document.getElementById("branch-selector-ee");
 	const eltInputRoll = document.getElementById("roll-input");
-
-	const eltCheckIll = document.getElementById("reasonIllBox");
-	const eltCheckFam = document.getElementById("reasonFamBox");
-	const eltCheckEvt = document.getElementById("reasonEvtBox");
-
-	const eltChecks = [eltCheckIll, eltCheckFam, eltCheckEvt];
-
-	const eltButtonMark = document.getElementById("mark");
 	const eltPreNotif = document.getElementById("notif");
 	const eltForm = document.getElementById("form");
-	// #endregion
 
 	// These are only rough checks.
 	// You HAVE TO keep a table in-DB to know which rolls actually exist in the college!
@@ -56,8 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		["reasonIll", "reasonFam", "reasonEvt"].forEach((p_key) => {
 
-			if (formData.get(p_key))
+			if (formData.get(p_key)) {
+
 				query.append(p_key, 1);
+
+			}
 
 		});
 
@@ -70,18 +63,22 @@ document.addEventListener("DOMContentLoaded", () => {
 				eltPreNotif.textContent = "Done! :D"
 				eltPreNotif.style.background = "#ffcc00";
 				setTimeout(() => {
+
 					eltPreNotif.classList.add("changed");
 					setTimeout(() => eltPreNotif.classList.remove("changed"), 1500);
+
 				}, 0);
 
 			})
-			.catch((p_error) => {
+			.catch(() => {
 
 				eltPreNotif.textContent = "Failed :/"
 				eltPreNotif.style.background = "red";
 				setTimeout(() => {
+
 					eltPreNotif.classList.add("changed");
 					setTimeout(() => eltPreNotif.classList.remove("changed"), 1500);
+
 				}, 0);
 
 			});
